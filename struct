@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+// node creation
+struct node{
+    int data;
+    struct node *next;
+};
+
+//ends declarations
+struct node*head,*tail = NULL;
+    
+    //for adding node
+    void addnode(int data)
+    { //declaring node
+        struct node *newNode = (struct node*)malloc(sizeof(struct node));
+        newNode->data= data;
+        newNode->next= NULL;
+        //checking list
+        if(head==NULL)
+        {
+            head = newNode;
+            tail= newNode;
+        }else{
+            //add new node to tail
+            tail->next=newNode;
+            //new tail = new node
+            tail= newNode;
+        }
+    }
+ 
+ void display(){
+     //this point's to head
+     struct node *current = head;
+     
+     if(head== NULL){
+         printf("List is Empty here !!");
+         return;
+     }
+     //printing nodes
+     printf("Nodes of Singly Linked List :\n");
+        while(current !=NULL){
+        //giving direction
+        printf("%d",current->data);
+        //pointing stored data
+        current= current->next;
+        printf("\t");
+        }
+        //printf("\n");
+ }
+ 
+ 
+ int main(){
+     
+     addnode(21);
+     addnode(122);
+     addnode(192192);
+     
+     display();
+ }
